@@ -6,22 +6,23 @@
 }
 
 body {
-  background: linear-gradient(135deg, #e0e0e0, #ffffff);
+  background: linear-gradient(135deg, #222222, #ffffff);
   transition: background 0.5s;
 }
 
 .container {
   width: 100%;
   min-height: 100vh;
+  background: linear-gradient(135deg, #000000, #ffffff);
   padding: 10px;
 }
 
 .To-Do-App {
-  width: 100%;
   max-width: 900px;
   min-height: 100vh;
   margin: 50px auto 20px;
   border-radius: 10px;
+  background: linear-gradient(135deg, #ffffff, #222222);
   padding: 20px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -57,8 +58,6 @@ body {
 }
 
 .input,
-.category-select,
-.date-input,
 #search-box {
   flex: 1;
   border: 2px solid #ccc;
@@ -72,8 +71,6 @@ body {
 }
 
 .input:focus,
-.category-select:focus,
-.date-input:focus,
 #search-box:focus {
   border-color: #ff5945;
   background: #ffe082;
@@ -88,20 +85,10 @@ button,
   padding: 10px 15px;
   cursor: pointer;
   transition: background 0.3s;
+  background: #007bff; /* Unified button color */
 }
 
-button {
-  background: #007bff; /* Blue color for light theme */
-}
-
-button:hover {
-  background: #0056b3;
-}
-
-.update {
-  background: #007bff;
-}
-
+button:hover,
 .update:hover {
   background: #0056b3;
 }
@@ -183,11 +170,9 @@ body.dark-theme .To-Do-App {
 }
 
 body.dark-theme .input,
-body.dark-theme .category-select,
-body.dark-theme .date-input,
 body.dark-theme #search-box {
   background-color: #ffcc80;
-  color: black;
+  color: rgb(20, 20, 20);
   border: 2px solid #444;
 }
 
@@ -217,11 +202,6 @@ body.dark-theme .To-Do-App h2 {
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
 }
 
-body:not(.dark-theme) .To-Do-App h2 {
-  color: #000000;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
 /* Modal Styles */
 .modal {
   display: none; /* Hidden by default */
@@ -233,16 +213,6 @@ body:not(.dark-theme) .To-Do-App h2 {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
-}
-
-.modal-content {
-  background-color: #fefefe; /* White background */
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
 }
 
 .modal h2 {
@@ -266,7 +236,6 @@ body:not(.dark-theme) .To-Do-App h2 {
   border: none; /* No border */
   padding: 10px; /* Spacing */
   text-align: center; /* Centered text */
-  text-decoration: none; /* No underline */
   display: inline-block; /* Block element */
   font-size: 16px; /* Larger font */
   margin: 10px 2px; /* Space around buttons */
@@ -281,8 +250,6 @@ body:not(.dark-theme) .To-Do-App h2 {
   }
 
   .input,
-  .category-select,
-  .date-input,
   #search-box {
     font-size: 14px; /* Smaller font size on mobile */
     padding: 8px; /* Adjust padding */
@@ -304,11 +271,6 @@ body:not(.dark-theme) .To-Do-App h2 {
     font-size: 14px; /* Smaller font size for buttons */
   }
 
-  .modal-content {
-    width: 90%; /* Adjust modal width */
-    padding: 15px; /* Adjust modal padding */
-  }
-
   .input-group {
     flex-direction: column; /* Stack inputs vertically */
   }
@@ -321,4 +283,15 @@ body:not(.dark-theme) .To-Do-App h2 {
   button {
     width: 100%; /* Full width for buttons */
     margin-top: 10px; /* Space above button */
- 
+  }
+}
+.modal-content {
+  background-color: #fefefe; /* White background */
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 15px; /* Reduced padding */
+  border: 1px solid #888;
+  width: 50%; /* Adjusted width to make it smaller */
+  max-width: 400px; /* Set a max-width for smaller screens */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow */
+}
