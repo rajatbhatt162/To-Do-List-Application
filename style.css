@@ -308,4 +308,18 @@ body:not(.dark-theme) .To-Do-App h2 {
     width: 90%; /* Adjust modal width */
     padding: 15px; /* Adjust modal padding */
   }
+
+  .input-group {
+    flex-direction: column; /* Stack inputs vertically */
+  }
+
+  #search-box {
+    width: 100%; /* Full width for search box */
+    margin: 5px 0; /* Margin adjustment */
+  }
+
+  button {
+    width: 100%; /* Full width for buttons */
+    margin-top: 10px; /* Space above button */
+  }
 }
