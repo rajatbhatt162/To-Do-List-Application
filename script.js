@@ -19,26 +19,36 @@ function addTask() {
 
     // If editing a task
     if (currentTaskElement) {
-        currentTaskElement.firstChild.textContent = taskText; // Update task text
-        currentTaskElement = null; // Reset currentTaskElement after updating
+        updateCurrentTask(taskText);
     } else {
-        // Create a new list item
-        const li = document.createElement("li");
-        li.textContent = taskText;
-
-        // Append pencil (edit) and remove button to the task
-        const buttonContainer = createButtonContainer(li);
-        li.appendChild(buttonContainer);
-        
-        // Append the new list item to the container
-        listContainer.appendChild(li);
+        createNewTask(taskText);
     }
-
-    // Save the task to localStorage
-    saveTasks();
 
     // Clear the input box after adding/updating the task
     inputBox.value = '';
+}
+
+// Function to create a new task
+function createNewTask(taskText) {
+    const li = document.createElement("li");
+    li.textContent = taskText;
+
+    // Append pencil (edit) and remove button to the task
+    const buttonContainer = createButtonContainer(li);
+    li.appendChild(buttonContainer);
+    
+    // Append the new list item to the container
+    listContainer.appendChild(li);
+
+    // Save the task to localStorage
+    saveTasks();
+}
+
+// Function to update the currently editing task
+function updateCurrentTask(taskText) {
+    currentTaskElement.firstChild.textContent = taskText; // Update task text
+    currentTaskElement = null; // Reset currentTaskElement after updating
+    saveTasks(); // Save the updated task list
 }
 
 // Function to create button container for edit and remove buttons
@@ -77,17 +87,13 @@ function closeModal() {
 
 // Function to update the task
 function updateTask() {
-    if (currentTaskElement) {
-        const updatedText = modalInput.value.trim();
-        if (updatedText === '') {
-            alert("You must write something!");
-            return;
-        }
-        currentTaskElement.firstChild.textContent = updatedText; // Update task text
-        saveTasks(); // Save changes
-        closeModal(); // Close the modal
-        currentTaskElement = null; // Reset
+    const updatedText = modalInput.value.trim();
+    if (updatedText === '') {
+        alert("You must write something!");
+        return;
     }
+    updateCurrentTask(updatedText); // Update the task text
+    closeModal(); // Close the modal
 }
 
 // Function to remove a task
