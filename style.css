@@ -1,122 +1,150 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
+
 .container {
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(135deg, #000000, #ffffff);
-  padding: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.To-Do-App {
+  width: 100%;
+  max-width: 600px; /* Suitable for both desktop and mobile */
+  min-height: 500px; /* Makes sure it's tall enough */
+  background: linear-gradient(135deg, #ffffff, #000000);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Added shadow for desktop look */
+}
+
 .To-Do-App h2 {
   display: flex;
   align-items: center;
-  font-size: 80px; /* Text size */
-  font-weight: bold; /* Bold text */
+  font-size: 2.5rem; /* Larger text for heading */
+  font-weight: bold;
   color: white;
+  justify-content: center; /* Centers the text and image */
 }
 
 .To-Do-App h2 img {
-  margin-right: 40px; /* Adjusts space between image and text */
-  width: 300px;
-  height: 300px;
-  border: 3px solid rgb(255, 255, 255); /* Border width, style, and color */
-  border-radius: 5px; /* Rounded corners (optional) */
-}
-.To-Do-App {
-  width: 100%; /* Takes full width, adjust as needed */
-  max-width: 900px;
-  min-height: 100vh; /* Initially cover the whole viewport height */
-  background: linear-gradient(135deg, #000000, #ffffff);
-  margin: 100px auto 20px;
-  border-radius: 10px;
-  padding: 20px; /* Add padding for inner spacing */
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  margin-right: 20px;
+  width: 60px; /* Adjusted size for mobile and desktop */
+  height: 60px;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
-/* .To-Do-App {
-  width: 300;
-  max-width: 900px;
-  height: 900px;
-  background: linear-gradient(135deg, #000000, #ffffff);
-  margin: 100px auto 20px;
-  border-radius: 10px;
-} */
 .row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: #edeed0;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: #edeed0;
   border-radius: 30px;
-  padding-left: 20px;
-  margin-bottom: 25px;
-  margin-top: 30px; /* Adds space above the input section */
+  padding: 10px;
 }
+
 .input {
-  flex: 1;
+  flex-grow: 1; /* Input takes as much space as possible */
   border: none;
   outline: none;
   background: transparent;
+  font-size: 1.2rem;
   padding: 10px;
-  font-weight: 14px;
 }
+
 button {
-  border: none;
-  outline: none;
-  padding: 16px 50px;
-  background: #ff5945;
+  padding: 10px 20px;
+  background-color: #ff5945;
   color: white;
-  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
   cursor: pointer;
 }
-ul li {
+
+ul {
   list-style: none;
-  font-size: 17px;
+  padding: 0;
+}
+
+ul li {
+  font-size: 1.1rem;
   padding: 12px 8px 12px 50px;
-  user-select: none;
-  cursor: pointer;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
 ul li::before {
   content: "";
   position: absolute;
-  height: 28px;
-  width: 28px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
-  background-image: url("images/icon.png"); /* Corrected the URL */
-  background-size: cover; /* Ensure the image covers the circle */
-  left: 10px; /* Adjust the position of the circle */
-  top: 50%; /* Vertically center the circle */
-  transform: translateY(-50%); /* Ensure proper centering */
-}
-ul li.checked{
-    color: #555;
-    text-decoration: line-through;
-}
-ul li.checked::before{
-    background-image: url("images/icon.png");
-}
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 30px;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  font-weight: bold;
-  text-align: center;
+  background-image: url("images/icon.png");
+  background-size: cover;
+  left: 10px;
 }
 
-.close:hover {
-  color: rgb(255, 255, 255);
-  background-color: #000000;
-}
-li.checked {
+ul li.checked {
+  color: #555;
   text-decoration: line-through;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: rgb(255, 255, 255);
-  border-radius: 1pc;
+}
+
+ul li.checked::before {
+  background-image: url("images/icon.png");
+}
+
+.close, .edit {
+  position: absolute;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #ff5945;
+  cursor: pointer;
+}
+
+.edit {
+  right: 40px; /* Edit button will be next to close button */
+}
+
+.close:hover, .edit:hover {
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .To-Do-App h2 {
+    font-size: 1.8rem;
+  }
+
+  .To-Do-App h2 img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .input {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+
+  ul li {
+    font-size: 1rem;
+    padding: 10px 8px 10px 40px;
+  }
 }
