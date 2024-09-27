@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000, #ffffff);
+  padding: 10px;
+}
+.To-Do-App h2 {
+  display: flex;
+  align-items: center;
+  font-size: 80px; /* Text size */
+  font-weight: bold; /* Bold text */
+  color: white;
+}
+
+.To-Do-App h2 img {
+  margin-right: 40px; /* Adjusts space between image and text */
+  width: 300px;
+  height: 300px;
+  border: 3px solid rgb(255, 255, 255); /* Border width, style, and color */
+  border-radius: 5px; /* Rounded corners (optional) */
+}
+.To-Do-App {
+  width: 100%; /* Takes full width, adjust as needed */
+  max-width: 900px;
+  min-height: 100vh; /* Initially cover the whole viewport height */
+  background: linear-gradient(135deg, #000000, #ffffff);
+  margin: 100px auto 20px;
+  border-radius: 10px;
+  padding: 20px; /* Add padding for inner spacing */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* .To-Do-App {
+  width: 300;
+  max-width: 900px;
+  height: 900px;
+  background: linear-gradient(135deg, #000000, #ffffff);
+  margin: 100px auto 20px;
+  border-radius: 10px;
+} */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #edeed0;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  margin-top: 30px; /* Adds space above the input section */
+}
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px;
+  font-weight: 14px;
+}
+button {
+  border: none;
+  outline: none;
+  padding: 16px 50px;
+  background: #ff5945;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+ul li {
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-image: url("images/icon.png"); /* Corrected the URL */
+  background-size: cover; /* Ensure the image covers the circle */
+  left: 10px; /* Adjust the position of the circle */
+  top: 50%; /* Vertically center the circle */
+  transform: translateY(-50%); /* Ensure proper centering */
+}
+ul li.checked{
+    color: #555;
+    text-decoration: line-through;
+}
+ul li.checked::before{
+    background-image: url("images/icon.png");
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+.close:hover {
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+}
+li.checked {
+  text-decoration: line-through;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1pc;
+}
