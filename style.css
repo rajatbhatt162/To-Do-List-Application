@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
@@ -9,87 +9,94 @@
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(135deg, #000000, #ffffff);
-  padding: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.To-Do-App {
+  width: 100%;
+  max-width: 600px; /* Suitable for both desktop and mobile */
+  min-height: 500px; /* Makes sure it's tall enough */
+  background: linear-gradient(135deg, #ffffff, #000000);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Added shadow for desktop look */
 }
 
 .To-Do-App h2 {
   display: flex;
   align-items: center;
-  font-size: 3rem; /* Responsive text size */
+  font-size: 2.5rem; /* Larger text for heading */
   font-weight: bold;
   color: white;
+  justify-content: center; /* Centers the text and image */
 }
 
 .To-Do-App h2 img {
   margin-right: 20px;
-  width: 100px; /* Responsive image size */
-  height: 100px;
-  border: 3px solid rgb(255, 255, 255);
-  border-radius: 5px;
-}
-
-.To-Do-App {
-  width: 90%; /* Reduce width for mobile */
-  max-width: 900px;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #000000, #ffffff);
-  margin: 50px auto 20px;
-  border-radius: 10px;
-  padding: 20px;
-  box-sizing: border-box;
+  width: 60px; /* Adjusted size for mobile and desktop */
+  height: 60px;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
 .row {
   display: flex;
-  flex-direction: column;
-  background: #edeed0;
-  border-radius: 30px;
-  padding-left: 20px;
-  margin-bottom: 25px;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 30px;
+  margin-bottom: 20px;
+  background-color: #edeed0;
+  border-radius: 30px;
+  padding: 10px;
 }
 
 .input {
-  width: 100%; /* Full width for input */
+  flex-grow: 1; /* Input takes as much space as possible */
   border: none;
   outline: none;
   background: transparent;
+  font-size: 1.2rem;
   padding: 10px;
-  font-size: 16px;
 }
 
 button {
-  width: 100%;
-  margin-top: 10px;
-  border: none;
-  outline: none;
-  padding: 16px;
-  background: #ff5945;
+  padding: 10px 20px;
+  background-color: #ff5945;
   color: white;
-  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 
-ul li {
+ul {
   list-style: none;
+  padding: 0;
+}
+
+ul li {
   font-size: 1.1rem;
   padding: 12px 8px 12px 50px;
-  user-select: none;
-  cursor: pointer;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
 ul li::before {
   content: "";
   position: absolute;
-  height: 28px;
-  width: 28px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   background-image: url("images/icon.png");
   background-size: cover;
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 ul li.checked {
@@ -101,48 +108,43 @@ ul li.checked::before {
   background-image: url("images/icon.png");
 }
 
-.close {
+.close, .edit {
   position: absolute;
   right: 10px;
-  top: 10px;
-  font-size: 24px;
-  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  color: #ff5945;
   cursor: pointer;
-  font-weight: bold;
 }
 
-.close:hover {
-  color: rgb(255, 255, 255);
-  background-color: #000000;
+.edit {
+  right: 40px; /* Edit button will be next to close button */
 }
 
-li.checked {
-  text-decoration: line-through;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
+.close:hover, .edit:hover {
+  color: #000;
 }
 
-/* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
   .To-Do-App h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .To-Do-App h2 img {
-    width: 70px;
-    height: 70px;
-  }
-
-  button {
-    padding: 14px;
-    font-size: 16px;
+    width: 50px;
+    height: 50px;
   }
 
   .input {
-    font-size: 14px;
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 8px 15px;
   }
 
   ul li {
     font-size: 1rem;
+    padding: 10px 8px 10px 40px;
   }
 }

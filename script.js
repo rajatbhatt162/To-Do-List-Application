@@ -13,13 +13,13 @@ function addTask() {
     let li = document.createElement("li");
     li.textContent = inputBox.value;
 
-    // Append edit button to the task
+    // Create Edit Button
     let editButton = document.createElement("span");
     editButton.textContent = "✎";
     editButton.className = "edit";
     li.appendChild(editButton);
 
-    // Append remove button to the task
+    // Create Remove Button
     let removeButton = document.createElement("span");
     removeButton.textContent = "\u00D7";
     removeButton.className = "close";
@@ -28,7 +28,7 @@ function addTask() {
     // Append the new list item to the container
     listContainer.appendChild(li);
 
-    // Save the task to localStorage
+    // Save tasks to localStorage
     saveTasks();
 
     // Clear the input box after adding the task
@@ -40,16 +40,16 @@ function addTask() {
 listContainer.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
-    saveTasks();  // Save the updated task list (including checked state)
+    saveTasks();
   } else if (e.target.className === "close") {
     e.target.parentElement.remove();
-    saveTasks();  // Save the updated task list after removal
+    saveTasks();
   } else if (e.target.className === "edit") {
     let task = e.target.parentElement;
     let newValue = prompt("Edit the task:", task.firstChild.textContent);
     if (newValue) {
       task.firstChild.textContent = newValue;
-      saveTasks();  // Save the updated task list after editing
+      saveTasks(); // Save changes after editing
     }
   }
 }, false);
@@ -67,7 +67,7 @@ function saveTasks() {
     tasks.push(task);
   }
 
-  // Save the array of tasks as a JSON string in localStorage
+  // Save tasks to localStorage as a JSON string
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -85,13 +85,11 @@ function loadTasks() {
         li.classList.add("checked");
       }
 
-      // Add edit button
       let editButton = document.createElement("span");
       editButton.textContent = "✎";
       editButton.className = "edit";
       li.appendChild(editButton);
 
-      // Add remove button
       let removeButton = document.createElement("span");
       removeButton.textContent = "\u00D7";
       removeButton.className = "close";
