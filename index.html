@@ -1,26 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do-List</title>
+    <title>To-Do List</title>
+    <!-- Include Font Awesome for pencil icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fff; /* White background for modal */
+            padding: 20px; /* Add padding */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            text-align: center; /* Center text */
+            margin: 15% auto; /* Center the modal */
+            width: 300px; /* Set a width for the modal */
+        }
+
+        .button-container {
+            margin-top: 20px; /* Space between input and button */
+        }
+
+        .modal-button {
+            background-color: #007BFF; /* Blue color for the button */
+            color: white; /* White text color */
+            border: none; /* No border */
+            padding: 10px 20px; /* Padding for the button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+        .modal-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .close {
+            cursor: pointer; /* Pointer cursor for close button */
+            font-size: 24px; /* Font size for close icon */
+            float: right; /* Align close icon to the right */
+        }
+
+        /* Add more styling as needed */
+    </style>
+</head>
+<body>
     <div class="container">
-      <div class="To-Do-App">
-        <h2>
-          <img src="images/icon.png" alt="To Do Icon" />
-          TO DO LIST
-        </h2>
-        <div class="row">
-          <input class="input" type="text" id="input-box" placeholder="Add Your Task" />
-          <button onclick="addTask()">ADD</button>
+        <div class="To-Do-App">
+            <h2>
+                <img src="images/icon.png" alt="To Do Icon" />
+                TO DO LIST
+            </h2>
+            <div class="header">
+                <div class="input-group">
+                    <input class="input" type="text" id="input-box" placeholder="Add Your Task" />
+                    <select id="category-select" class="category-select">
+                        <option value="work">Student</option>
+                        <option value="personal">Office-Employee</option>
+                        <option value="urgent">Company</option>
+                    </select>
+                    <input type="date" id="due-date" class="date-input" />
+                    <button onclick="addTask()">ADD</button>
+                </div>
+                <input type="text" id="search-box" placeholder="Search your tasks..." onkeyup="searchTasks()" class="search-input" />
+            </div>
+            <div class="progress">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <ul id="list-container"></ul>
         </div>
-        <ul id="list-container">
-        </ul>
-      </div>
     </div>
+    <button onclick="toggleTheme()" class="toggle-theme">Toggle Theme</button>
+    
+    <!-- Edit Modal Structure -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Edit Task</h2>
+            <input type="text" id="modal-input" placeholder="Edit your task" />
+            <div class="button-container">
+                <button onclick="updateTask()" class="modal-button">OK</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
