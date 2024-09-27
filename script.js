@@ -12,13 +12,19 @@ function addTask() {
     // Create a new list item
     let li = document.createElement("li");
     li.textContent = inputBox.value;
-    
+
+    // Append edit button to the task
+    let editButton = document.createElement("span");
+    editButton.textContent = "✎";
+    editButton.className = "edit";
+    li.appendChild(editButton);
+
     // Append remove button to the task
     let removeButton = document.createElement("span");
     removeButton.textContent = "\u00D7";
     removeButton.className = "close";
     li.appendChild(removeButton);
-    
+
     // Append the new list item to the container
     listContainer.appendChild(li);
 
@@ -30,14 +36,21 @@ function addTask() {
   }
 }
 
-// Event delegation for checking tasks and removing them
+// Event delegation for checking tasks, editing them, and removing them
 listContainer.addEventListener("click", function (e) {
   if (e.target.tagName === "LI") {
     e.target.classList.toggle("checked");
     saveTasks();  // Save the updated task list (including checked state)
-  } else if (e.target.tagName === "SPAN") {
+  } else if (e.target.className === "close") {
     e.target.parentElement.remove();
     saveTasks();  // Save the updated task list after removal
+  } else if (e.target.className === "edit") {
+    let task = e.target.parentElement;
+    let newValue = prompt("Edit the task:", task.firstChild.textContent);
+    if (newValue) {
+      task.firstChild.textContent = newValue;
+      saveTasks();  // Save the updated task list after editing
+    }
   }
 }, false);
 
@@ -72,6 +85,13 @@ function loadTasks() {
         li.classList.add("checked");
       }
 
+      // Add edit button
+      let editButton = document.createElement("span");
+      editButton.textContent = "✎";
+      editButton.className = "edit";
+      li.appendChild(editButton);
+
+      // Add remove button
       let removeButton = document.createElement("span");
       removeButton.textContent = "\u00D7";
       removeButton.className = "close";
