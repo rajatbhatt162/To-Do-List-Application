@@ -1,3 +1,4 @@
+/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,24 +6,26 @@
   box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
-  background: linear-gradient(135deg, #222222, #ffffff);
+  background: linear-gradient(176deg, #cfbbe5, #4f0b6a);
   transition: background 1.5s;
 }
 
+/* Container Styles */
 .container {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #000000, #ffffff);
   padding: 10px;
 }
 
+/* To-Do App Styles */
 .To-Do-App {
   max-width: 900px;
   min-height: 100vh;
   margin: 50px auto 20px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ffffff, #222222);
+  background: linear-gradient(176deg, #c09ce6, #b27ac9);
   padding: 20px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   transition: all 1.8s ease-in-out;
@@ -34,7 +37,8 @@ body {
   font-size: 35px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333;
+  color: #010420;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .To-Do-App h2 img {
@@ -43,6 +47,7 @@ body {
   height: 120px;
 }
 
+/* Header and Input Group */
 .header {
   display: flex;
   justify-content: space-between;
@@ -52,7 +57,6 @@ body {
 
 .input-group {
   display: flex;
-  flex-direction: row; /* Default to row for desktop */
   align-items: center;
   margin: 15px 0 10px;
 }
@@ -76,39 +80,21 @@ body {
   background: #ffe082;
 }
 
-button,
-.update,
-.toggle-theme {
+button {
   border: none;
   border-radius: 5px;
   color: white;
   padding: 10px 15px;
   cursor: pointer;
   transition: background 1.8s;
-  background: #007bff; /* Unified button color */
+  background: #007bff;
 }
 
-button:hover,
-.update:hover {
+button:hover {
   background: #0056b3;
 }
 
-.close {
-  cursor: pointer;
-  color: #ff0000;
-  padding: 0 10px;
-  font-weight: bold;
-}
-
-.close:hover {
-  color: #c00000;
-}
-
-#search-box {
-  width: 30%;
-  margin-left: 10px;
-}
-
+/* List Styles */
 ul {
   list-style-type: none;
   padding: 0;
@@ -123,7 +109,7 @@ li {
   border: 1px solid #ddd;
   border-radius: 5px;
   margin: 10px 0;
-  transition: background 1.8s;
+  transition: background 0.3s;
   font-weight: 600;
   font-size: 18px;
   color: #333;
@@ -138,6 +124,7 @@ li:hover {
   background: #f1f1f1;
 }
 
+/* Progress Bar */
 .progress {
   margin: 20px 0;
   background: #f0f0f0;
@@ -152,21 +139,27 @@ li:hover {
   transition: width 0.3s;
 }
 
+/* Theme Toggle Button */
 .toggle-theme {
   position: absolute;
   top: 20px;
   right: 20px;
   background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
   z-index: 1000;
+  cursor: pointer;
 }
 
-/* Dark Theme Styles */
+/* Dark Theme */
 body.dark-theme {
   background: linear-gradient(135deg, #121212, #ffffff);
 }
 
 body.dark-theme .container {
-  background: linear-gradient(135deg, #000000, #121212);
+  background: linear-gradient(135deg, #171717, #7c7b7b);
 }
 
 body.dark-theme .To-Do-App {
@@ -180,23 +173,17 @@ body.dark-theme .To-Do-App h2 {
 body.dark-theme .input,
 body.dark-theme #search-box {
   background: #ffcc80;
-  color: rgb(0, 0, 0);
+  color: #000;
   border: 2px solid #444;
 }
 
 body.dark-theme button,
-body.dark-theme .update,
 body.dark-theme .toggle-theme {
-  background: #ff5945;
-}
-
-body.dark-theme #search-box:focus {
-  border-color: #ff5945;
-  background: #ffb74d;
+  background: linear-gradient(135deg, #222222, #1a2383);
 }
 
 body.dark-theme li {
-  background: #1e1e1e;
+  background: linear-gradient(135deg, #000000, #605d5d);
   border: 1px solid #444;
   color: white;
 }
@@ -211,4 +198,56 @@ body.dark-theme .progress {
 
 body.dark-theme .progress-bar {
   background: #8ab96d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .To-Do-App {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .To-Do-App h2 {
+    font-size: 25px;
+  }
+
+  .To-Do-App h2 img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  #search-box {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .input,
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .toggle-theme {
+    position: revert;
+    top: 20px;
+    right: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    z-index: 1000;
+    cursor: pointer;
+}
 }
